@@ -1,0 +1,146 @@
+script: "/main/main_menu/main_menu.gui_script"
+fonts {
+  name: "button font"
+  font: "/assets/fonts/button font.font"
+}
+textures {
+  name: "main"
+  texture: "/main/main.atlas"
+}
+nodes {
+  position {
+    x: 500.0
+    y: 500.0
+  }
+  scale {
+    x: 2.0
+    y: 2.0
+  }
+  type: TYPE_BOX
+  texture: "main/menu background"
+  id: "background"
+  layer: "background"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: 500.0
+    y: 800.0
+  }
+  scale {
+    y: 0.8
+  }
+  type: TYPE_BOX
+  texture: "main/wooden_button"
+  id: "create game button"
+  adjust_mode: ADJUST_MODE_ZOOM
+  layer: "buttons"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  scale {
+    x: 0.995748
+    y: 1.003112
+  }
+  size {
+    x: 376.0
+    y: 198.0
+  }
+  color {
+    x: 0.23
+    y: 0.154
+    z: 0.003
+  }
+  type: TYPE_TEXT
+  text: "Create Game"
+  font: "button font"
+  id: "create game text"
+  parent: "create game button"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 500.0
+    y: 500.0
+  }
+  scale {
+    y: 0.8
+  }
+  type: TYPE_BOX
+  texture: "main/wooden_button"
+  id: "join game button"
+  adjust_mode: ADJUST_MODE_ZOOM
+  layer: "buttons"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  scale {
+    x: 0.995748
+    y: 1.003112
+  }
+  size {
+    x: 376.0
+    y: 198.0
+  }
+  color {
+    x: 0.23
+    y: 0.154
+    z: 0.003
+  }
+  type: TYPE_TEXT
+  text: "Join Game"
+  font: "button font"
+  id: "join game text"
+  parent: "join game button"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 97.0
+    y: 45.0
+  }
+  scale {
+    x: 0.5
+    y: 0.4
+  }
+  type: TYPE_BOX
+  texture: "main/wooden_button"
+  id: "logout button"
+  adjust_mode: ADJUST_MODE_ZOOM
+  layer: "buttons"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  scale {
+    x: 0.995748
+    y: 1.003112
+  }
+  size {
+    x: 376.0
+    y: 198.0
+  }
+  color {
+    x: 0.23
+    y: 0.154
+    z: 0.003
+  }
+  type: TYPE_TEXT
+  text: "Logout\n"
+  ""
+  font: "button font"
+  id: "logout text"
+  parent: "logout button"
+  inherit_alpha: true
+}
+layers {
+  name: "background"
+}
+layers {
+  name: "buttons"
+}
+material: "/builtins/materials/gui.material"
+adjust_reference: ADJUST_REFERENCE_PARENT

@@ -1,0 +1,153 @@
+require "main/libs/input_box"
+require "main/libs/button"
+require "main/libs/server"
+
+button.reset()
+input_box.reset()
+
+function init(self)
+	msg.post(".", "acquire_input_focus")
+
+	self.popup = gui.get_node("popup")
+	
+	self.connecting_popup = gui.get_node("connecting to server popup")
+
+	self.is_registering = false
+	self.is_logging_in = false
+
+
+	input_box.set_cursor(gui.get_node("cursor"))
+	input_box.add("name input", "name",20)
+	input_box.add("password input", "password",20)
+	input_box.set_enter_box("name", "password")
+	input_box.set_tab_box("name", "password")
+	input_box.set_enter_function("password", check_name_and_password_len, self)
+	input_box.set_tab_box("password", "name")
+
+	button.add(gui.get_node("log in button"), "log in", log_in, self)
+	button.add(gui.get_node("register button"), "register", register, self)
+	button.add(gui.get_node("back button"), "back", go_back, self)
+
+	Account = sys.load(sys.get_save_file(ProjectName, "account"))
+
+	server.post("relog",nil, relog)
+end
+
+
+
+function relog(self, id, response)
+	if response.status == 200 then
+		response = json.decode(response.response)
+		if response then
+			Account = response
+			msg.post("main:/loader#loader", "load_collection",{["proxy"] = "main_menu_proxy"})
+			msg.post("main:/loader#loader", "unload_collection",{["proxy"] = "account_menu_proxy"})
+		end
+	end
+end
+
+
+
+function log_in(self)
+	self.is_logging_in = true
+	
+	button.set_enabled("log in", false)
+	button.set_enabled("register", false)
+	button.set_enabled("back", true)
+	input_box.set_enabled_all(true)
+	input_box.set_focus("name")
+end
+
+
+
+function register(self)
+	self.is_registering = true
+
+	button.set_enabled("log in", false)
+	button.set_enabled("register", false)
+	button.set_enabled("back", true)
+	input_box.set_enabled_all(true)
+	input_box.set_focus("name")
+end
+
+
+
+function go_back(self)
+	self.is_logging_in = false
+	self.is_registering = false
+
+	button.set_enabled("log in", true)
+	button.set_enabled("register", true)
+	button.set_enabled("back", false)
+	input_box.set_enabled_all(false)
+end
+
+
+
+function on_input(self, action_id, action)
+	if not action_id then
+		return
+	end
+
+	button.on_input(action_id, action)
+	input_box.on_input(action_id,action)
+end
+
+
+
+function show_popup(popup, message)
+	gui.set_text(popup, message)
+	gui.set_enabled(popup, true)
+
+
+	timer.delay(2, false, function()
+		gui.set_enabled(popup, false)
+	end)
+end
+
+
+
+function check_name_and_password_len(self)
+	if #input_box.get_text("name") < 4 then
+		show_popup(self.popup, "Your name must be longer than 4 Characters.")
+	elseif #input_box.get_text("password") < 4 then
+		show_popup(self.popup, "Your password must be longer than 4 Characters.")
+	elseif not self.waiting_for_server_response then
+		self.name = input_box.get_text("name")
+		self.password = input_box.get_text("password")
+		connect_to_server(self)
+	end
+end
+
+
+
+function connect_to_server(self)
+	gui.set_enabled(self.connecting_popup,true)
+
+	local path = nil
+	if self.is_logging_in then
+		path = "log_in"
+	elseif self.is_registering then
+		path = "register"
+	end
+
+	self.waiting_for_server_response = true
+	server.post(path, {["name"] = self.name, ["password"] = self.password},
+	function(self, id, response)
+		gui.set_enabled(self.connecting_popup,false)
+		self.waiting_for_server_response = false
+		if response.status ~= 200 then
+			show_popup(self.popup, "Connection failed.")
+		elseif response.response ~= "null" then
+			show_popup(self.popup, response.response)
+		else
+			Account = response.response
+			msg.post("main:/loader#loader", "load_collection",{["proxy"] = "main_menu_proxy"})
+			msg.post("main:/loader#loader", "unload_collection",{["proxy"] = "account_menu_proxy"})
+		end
+	end
+	)
+
+end
+
+

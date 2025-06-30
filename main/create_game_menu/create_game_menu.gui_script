@@ -1,0 +1,49 @@
+require "main/libs/input_box"
+require "main/libs/button"
+require "main/libs/dropdown"
+require "main/libs/scroll_input"
+
+function init(self)
+	msg.post(".", "acquire_input_focus")
+
+	
+	input_box.reset()
+	button.reset()
+	dropdown.reset()
+	scroll_input.reset()
+	
+
+	input_box.add("game name input", "game name", 20)
+	input_box.set_cursor(gui.get_node("cursor"))
+	
+	button.add(gui.get_node("back button"), "back", go_back)
+	
+	dropdown.add("privacy dropdown", "privacy")
+	dropdown.add("session type dropdown", "session_type")
+
+	scroll_input.add("map width scroll input", "map_width",2,10)
+	scroll_input.add("map height scroll input", "map_height",2,10)
+	scroll_input.set_action_name_scroll_up("zoom_in")
+	scroll_input.set_action_name_scroll_down("zoom_out")
+end
+
+
+
+function go_back()
+	msg.post("main:/loader#loader", "load_collection",{["proxy"] = "main_menu_proxy"})
+	msg.post("main:/loader#loader", "unload_collection",{["proxy"] = "create_game_menu_proxy"})
+end
+
+
+
+function on_input(self, action_id, action)
+	scroll_input.on_input(action_id, action)
+	if not action_id then
+		return
+	end
+
+	input_box.on_input(action_id, action)
+	button.on_input(action_id, action)
+	dropdown.on_input(action_id, action)
+end
+

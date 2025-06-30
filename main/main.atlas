@@ -1,0 +1,22 @@
+images {
+  image: "/assets/images/forest tile.png"
+}
+images {
+  image: "/assets/images/mountains tile.png"
+}
+images {
+  image: "/assets/images/plains tile.png"
+}
+images {
+  image: "/assets/images/water_background.jpg"
+}
+images {
+  image: "/assets/images/wooden_button.png"
+}
+images {
+  image: "/assets/images/menu background.jpg"
+}
+images {
+  image: "/assets/images/dropdown box.png"
+}
+extrude_borders: 2

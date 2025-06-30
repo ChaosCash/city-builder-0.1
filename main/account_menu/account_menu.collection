@@ -1,0 +1,10 @@
+name: "account_menu"
+scale_along_z: 0
+embedded_instances {
+  id: "gui"
+  data: "components {\n"
+  "  id: \"account_menu\"\n"
+  "  component: \"/main/account_menu/account_menu.gui\"\n"
+  "}\n"
+  ""
+}

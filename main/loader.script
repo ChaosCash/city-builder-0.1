@@ -1,0 +1,24 @@
+function init(self)
+	msg.post("#account_menu_proxy", "load")
+	msg.post(".", "acquire_input_focus")
+	ProjectName = "city builder 0.1"
+	ServerUrl = "https://citybuilder-server.onrender.com/"
+end
+
+
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("proxy_loaded") then
+		msg.post(sender, "init")
+		msg.post(sender, "enable")
+	end
+
+
+	if message_id == hash("load_collection") then
+		msg.post("#" .. message["proxy"], "load")
+	end
+
+	if message_id == hash("unload_collection") then
+		msg.post("#" .. message["proxy"], "unload")
+	end
+end
