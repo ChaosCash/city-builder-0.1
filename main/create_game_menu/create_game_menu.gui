@@ -118,7 +118,7 @@ nodes {
 nodes {
   position {
     x: 97.0
-    y: 45.0
+    y: 40.0
   }
   scale {
     x: 0.5
@@ -649,6 +649,44 @@ nodes {
     w: 1.0
   }
   alpha: 0.8
+}
+nodes {
+  position {
+    x: 906.0
+    y: 40.0
+  }
+  scale {
+    x: 0.5
+    y: 0.4
+  }
+  type: TYPE_BOX
+  texture: "main/wooden_button"
+  id: "create button"
+  adjust_mode: ADJUST_MODE_ZOOM
+  layer: "buttons"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  scale {
+    x: 0.995748
+    y: 1.003112
+  }
+  size {
+    x: 376.0
+    y: 198.0
+  }
+  color {
+    x: 0.23
+    y: 0.154
+    z: 0.003
+  }
+  type: TYPE_TEXT
+  text: "Create"
+  font: "button font"
+  id: "create text"
+  parent: "create button"
+  inherit_alpha: true
 }
 layers {
   name: "background"

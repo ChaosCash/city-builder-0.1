@@ -24,5 +24,11 @@ embedded_instances {
   "  data: \"collection: \\\"/main/create_game_menu/create_game_menu.collection\\\"\\n"
   "\"\n"
   "}\n"
+  "embedded_components {\n"
+  "  id: \"lobby_menu_proxy\"\n"
+  "  type: \"collectionproxy\"\n"
+  "  data: \"collection: \\\"/main/lobby_menu/lobby.collection\\\"\\n"
+  "\"\n"
+  "}\n"
   ""
 }

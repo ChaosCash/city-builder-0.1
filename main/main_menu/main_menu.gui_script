@@ -7,9 +7,9 @@ function init(self)
 
 	button.reset()
 	
-	button.add(gui.get_node("create game button"), "create game", open_create_game_menu)
-	button.add(gui.get_node("join game button"), "join game", open_join_game_menu)
-	button.add(gui.get_node("logout button"), "logout", logout)
+	button.add("create game button", "create game", open_create_game_menu)
+	button.add("join game button", "join game", open_join_game_menu)
+	button.add("logout button", "logout", logout)
 end
 
 

@@ -24,9 +24,9 @@ function init(self)
 	input_box.set_enter_function("password", check_name_and_password_len, self)
 	input_box.set_tab_box("password", "name")
 
-	button.add(gui.get_node("log in button"), "log in", log_in, self)
-	button.add(gui.get_node("register button"), "register", register, self)
-	button.add(gui.get_node("back button"), "back", go_back, self)
+	button.add("log in button", "log in", log_in, self)
+	button.add("register button", "register", register, self)
+	button.add("back button", "back", go_back, self)
 
 	Account = sys.load(sys.get_save_file(ProjectName, "account"))
 

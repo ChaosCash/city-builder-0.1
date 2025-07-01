@@ -11,8 +11,8 @@ end
 
 
 
-function button.add(button_node, button_name, button_function, function_params)
-	added_buttons[button_name] = {["function"] = button_function, ["node"] = button_node, ["params"] = function_params}
+function button.add(node_id, button_name, button_function, function_params)
+	added_buttons[button_name] = {["function"] = button_function, ["node"] = gui.get_node(node_id), ["params"] = function_params}
 end
 
 

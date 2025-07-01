@@ -13,10 +13,11 @@ function init(self)
 	scroll_input.reset()
 	
 
-	input_box.add("game name input", "game name", 20)
+	input_box.add("game name input", "game_name", 20)
 	input_box.set_cursor(gui.get_node("cursor"))
 	
-	button.add(gui.get_node("back button"), "back", go_back)
+	button.add("back button", "back", go_back)
+	button.add("create button", "create", create_game)
 	
 	dropdown.add("privacy dropdown", "privacy")
 	dropdown.add("session type dropdown", "session_type")
@@ -33,6 +34,17 @@ function go_back()
 	msg.post("main:/loader#loader", "load_collection",{["proxy"] = "main_menu_proxy"})
 	msg.post("main:/loader#loader", "unload_collection",{["proxy"] = "create_game_menu_proxy"})
 end
+
+
+
+
+function create_game()
+	if server.post("create_lobby", json.encode({["game_name"] = input_box.get_text("game_name"), ["session_type"] = dropdown.get_selected_option("session_type"), ["privacy"] = dropdown.get_selected_option("privacy")})) then
+		msg.post("main:/loader#loader", "load_collection",{["proxy"] = "lobby_menu_proxy"})
+		msg.post("main:/loader#loader", "unload_collection",{["proxy"] = "create_game_menu_proxy"})
+	end
+end
+
 
 
 

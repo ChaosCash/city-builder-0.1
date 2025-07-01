@@ -1,0 +1,10 @@
+name: "lobby"
+scale_along_z: 0
+embedded_instances {
+  id: "gui"
+  data: "components {\n"
+  "  id: \"lobby\"\n"
+  "  component: \"/main/lobby_menu/lobby.gui\"\n"
+  "}\n"
+  ""
+}
