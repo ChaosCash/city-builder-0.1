@@ -9,8 +9,8 @@ function server.post(path, request_body, callback_function)
 	if type(request_body) == "table" then
 	content_type = "application/json"
 	request_body = json.encode(request_body)
-	else
-	content_type = nil
+else
+	content_type = "text/plain"
 	end
 
 	http.request(

@@ -39,7 +39,7 @@ end
 
 
 function create_game()
-	if server.post("create_lobby", json.encode({["game_name"] = input_box.get_text("game_name"), ["session_type"] = dropdown.get_selected_option("session_type"), ["privacy"] = dropdown.get_selected_option("privacy")})) then
+	if server.post("create_lobby", json.encode({["name"] = input_box.get_text("game_name"), ["session_type"] = dropdown.get_selected_option("session_type"), ["privacy"] = dropdown.get_selected_option("privacy"), ["map_width"] = scroll_input.get_value("map_width"), ["map_height"] = scroll_input.get_value("map_height")})) then
 		msg.post("main:/loader#loader", "load_collection",{["proxy"] = "lobby_menu_proxy"})
 		msg.post("main:/loader#loader", "unload_collection",{["proxy"] = "create_game_menu_proxy"})
 	end

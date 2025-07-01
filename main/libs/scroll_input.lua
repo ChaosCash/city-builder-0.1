@@ -9,6 +9,12 @@ scroll_input = {}
 
 
 
+function scroll_input.get_value(scroll_input_name)
+	return added_inputs[scroll_input_name]["cur_value"]
+end
+
+
+
 function scroll_input.reset()
 	added_inputs = {}
 end

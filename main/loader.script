@@ -1,8 +1,13 @@
+require "main/libs/server"
+
+
 function init(self)
 	msg.post("#account_menu_proxy", "load")
 	msg.post(".", "acquire_input_focus")
 	ProjectName = "city builder 0.1"
 	ServerUrl = "https://citybuilder-server.onrender.com/"
+
+	server.post("post_test",{["input"] = "Santi hat ein kleines gerät"})
 end
 
 
