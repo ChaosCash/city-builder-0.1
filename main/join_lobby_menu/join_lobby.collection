@@ -1,0 +1,10 @@
+name: "join_lobby"
+scale_along_z: 0
+embedded_instances {
+  id: "gui"
+  data: "components {\n"
+  "  id: \"lobby\"\n"
+  "  component: \"/main/join_lobby_menu/join_lobby.gui\"\n"
+  "}\n"
+  ""
+}

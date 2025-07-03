@@ -1,0 +1,85 @@
+require "assets/libs/button"
+require "assets/libs/scroll_menu"
+require "assets/libs/server"
+
+
+
+function init(self)
+	msg.post(".", "acquire_input_focus")
+
+	self.popup = gui.get_node("popup")
+	
+	button.reset()
+	button.add("back button", "back", go_back_to_main)
+
+	scroll_menu.add("lobbies label", "lobbies", function (scroll_name,scroll_menu,lobby_key) server.post("join_lobby", tostring(lobby_key), join_lobby) end)
+	scroll_menu.update_content("lobbies", {{["name"] = "No lobbies found", ["player_count"] = ""}})
+	scroll_menu.set_action_name_scroll_up("zoom_in")
+	scroll_menu.set_action_name_scroll_down("zoom_out")
+
+
+	server.get("get_lobbies", update_lobbies)
+	timer.delay(5, true, function () server.get("get_lobbies", update_lobbies) end)
+end
+
+
+
+function show_popup(popup, message)
+	gui.set_text(popup, message)
+	gui.set_enabled(popup, true)
+
+
+	timer.delay(2, false, function()
+		gui.set_enabled(popup, false)
+	end)
+end
+
+
+
+function update_lobbies(self, id, response)
+	response = json.decode(response.response)
+	
+	if type(response) == "table" then
+		for k, lobby in pairs(response) do
+			lobby["player_count"] = table.maxn(lobby["players"]) .. "/4"
+			response[tonumber(k)] = response[k]
+		end
+	end
+
+	scroll_menu.update_content("lobbies", response)
+end
+
+
+
+function join_lobby(self, id, response)
+	if response.status == 200 then
+		local response_table = json.decode(response.response)
+		if response_table then
+			CurLobby = response_table
+			msg.post("main:/loader#loader", "load_collection",{["proxy"] = "lobby_menu_proxy"})
+			msg.post("main:/loader#loader", "unload_collection",{["proxy"] = "join_lobby_menu_proxy"})
+		else
+			show_popup(self.popup, response.response)
+		end
+	end
+end
+
+
+
+function go_back_to_main()
+	msg.post("main:/loader#loader", "load_collection",{["proxy"] = "main_menu_proxy"})
+	msg.post("main:/loader#loader", "unload_collection",{["proxy"] = "join_lobby_menu_proxy"})
+end
+
+
+
+
+function on_input(self, action_id, action)
+	if not action_id then
+		return
+	end
+
+	
+	scroll_menu.on_input(action_id, action)
+	button.on_input(action_id, action)
+end

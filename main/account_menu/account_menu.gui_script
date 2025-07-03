@@ -1,6 +1,6 @@
-require "main/libs/input_box"
-require "main/libs/button"
-require "main/libs/server"
+require "assets/libs/input_box"
+require "assets/libs/button"
+require "assets/libs/server"
 
 button.reset()
 input_box.reset()
@@ -24,11 +24,9 @@ function init(self)
 	input_box.set_enter_function("password", check_name_and_password_len, self)
 	input_box.set_tab_box("password", "name")
 
-	button.add("log in button", "log in", log_in, self)
-	button.add("register button", "register", register, self)
 	button.add("back button", "back", go_back, self)
 
-	Account = sys.load(sys.get_save_file(ProjectName, "account"))
+	Account = {}
 
 	server.post("relog",nil, relog)
 end
@@ -42,6 +40,9 @@ function relog(self, id, response)
 			Account = response
 			msg.post("main:/loader#loader", "load_collection",{["proxy"] = "main_menu_proxy"})
 			msg.post("main:/loader#loader", "unload_collection",{["proxy"] = "account_menu_proxy"})
+		else
+			button.add("log in button", "log in", log_in, self)
+			button.add("register button", "register", register, self)
 		end
 	end
 end
@@ -138,10 +139,10 @@ function connect_to_server(self)
 		self.waiting_for_server_response = false
 		if response.status ~= 200 then
 			show_popup(self.popup, "Connection failed.")
-		elseif response.response ~= "null" then
-			show_popup(self.popup, response.response)
+		elseif response.response == '"Wrong password."' then
+			show_popup(self.popup, "Wrong password.")
 		else
-			Account = response.response
+			Account = json.decode(response.response)
 			msg.post("main:/loader#loader", "load_collection",{["proxy"] = "main_menu_proxy"})
 			msg.post("main:/loader#loader", "unload_collection",{["proxy"] = "account_menu_proxy"})
 		end

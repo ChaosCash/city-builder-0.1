@@ -1,0 +1,13 @@
+{
+  "project_git" : {
+    "sha1" : "a4528b674b84335495558fa08619585018eb0f4c",
+    "origin" : "https://github.com/ChaosCash/city-builder-0.1",
+    "branch" : "master"
+  },
+  "bob_arguments" : {
+    "sha1" : "7a0e23b3fcab4c5db82f2b32f5d8ac5df9467c9d",
+    "version" : "1.10.2",
+    "timestamp" : "2025-06-11 15:51:49"
+  },
+  "defold_sdk" : "7a0e23b3fcab4c5db82f2b32f5d8ac5df9467c9d"
+}

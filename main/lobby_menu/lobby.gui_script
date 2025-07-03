@@ -1,5 +1,5 @@
-require "main/libs/button"
-require "main/libs/server"
+require "assets/libs/button"
+require "assets/libs/server"
 
 
 
@@ -8,12 +8,105 @@ function init(self)
 	
 	button.reset()
 	button.add("back button", "back", go_back_to_main)
+	
+	name_node = gui.get_node("lobby name")
+	width_node = gui.get_node("map width")
+	height_node = gui.get_node("map height")
+	privacy_node = gui.get_node("privacy")
+	session_type_node = gui.get_node("session type")
+	self.player_nodes = {[1] = {}, [2] = {}, [3] = {}, [4] = {}}
+	self.player_nodes[1]["name_node"] = gui.get_node("player 1")
+	self.player_nodes[2]["name_node"] = gui.get_node("player 2")
+	self.player_nodes[3]["name_node"] = gui.get_node("player 3")
+	self.player_nodes[4]["name_node"] = gui.get_node("player 4")
+	self.player_nodes[1]["ready_node"] = gui.get_node("player 1 ready")
+	self.player_nodes[2]["ready_node"] = gui.get_node("player 2 ready")
+	self.player_nodes[3]["ready_node"] = gui.get_node("player 3 ready")
+	self.player_nodes[4]["ready_node"] = gui.get_node("player 4 ready")
+	ready_button = gui.get_node("ready button")
+	not_ready_button = gui.get_node("not ready button")
+	start_button = gui.get_node("start button")
+	
+	
+	gui.set_text(name_node, CurLobby["name"])
+	gui.set_text(width_node, CurLobby["map_width"])
+	gui.set_text(height_node, CurLobby["map_height"])
+	gui.set_text(privacy_node, CurLobby["privacy"])
+	gui.set_text(session_type_node, CurLobby["session_type"])
+	gui.set_text(self.player_nodes[1]["name_node"], CurLobby["players"][1]["display_name"])
+
+
+	if Account["name"] == CurLobby["players"][1]["name"] then
+		gui.set_enabled(start_button, true)
+		gui.set_enabled(ready_button, false)
+		button.add("start button", "start", start_lobby)
+	else
+		button.add("ready button", "ready", set_ready, self)
+		button.add("not ready button", "not_ready", set_not_ready, self)
+	end
+
+	for k,player in pairs(CurLobby["players"]) do
+		gui.set_text(self.player_nodes[k]["name_node"], player["display_name"])
+		if player["is_ready"] then
+			gui.set_text(self.player_nodes[k]["ready_node"], "X")
+		else
+			gui.set_text(self.player_nodes[k]["ready_node"], "")
+		end
+	end
+
+	timer.delay(5, true, function () server.get("get_lobby_info", update_lobby) end)
 end
 
 
 
+function update_lobby(self, id, response)
+
+	if response.status == 200 then
+		response = json.decode(response.response)
+		if response then
+			CurLobby = response
+			for i = 1, 4 do
+				if CurLobby["players"][i] then
+					gui.set_text(self.player_nodes[i]["name_node"], CurLobby["players"][i]["display_name"])
+					if CurLobby["players"][i]["is_ready"] then
+						gui.set_text(self.player_nodes[i]["ready_node"], "X")
+					else
+						gui.set_text(self.player_nodes[i]["ready_node"], "")
+					end
+				else
+					gui.set_text(self.player_nodes[i]["name_node"], "")
+					gui.set_text(self.player_nodes[i]["ready_node"], "")
+				end
+			end
+		end
+	end
+
+end
+
+
+
+function set_ready(self)
+	gui.set_text(self.player_nodes[1]["ready_node"], "X")
+	server.post("set_ready")
+	self.is_ready = true
+	gui.set_enabled(not_ready_button, true)
+	gui.set_enabled(ready_button, false)
+end
+
+
+
+function set_not_ready(self)
+	gui.set_text(self.player_nodes[1]["ready_node"], "")
+	server.post("set_not_ready")
+	self.is_ready = false
+	gui.set_enabled(not_ready_button, false)
+	gui.set_enabled(ready_button, true)
+end
+
+
 
 function go_back_to_main()
+	server.post("leave_lobby")
 	msg.post("main:/loader#loader", "load_collection",{["proxy"] = "main_menu_proxy"})
 	msg.post("main:/loader#loader", "unload_collection",{["proxy"] = "lobby_menu_proxy"})
 end

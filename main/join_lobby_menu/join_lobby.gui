@@ -1,0 +1,637 @@
+script: "/main/join_lobby_menu/join_lobby.gui_script"
+fonts {
+  name: "default"
+  font: "/builtins/fonts/default.font"
+}
+fonts {
+  name: "button font"
+  font: "/assets/fonts/button font.font"
+}
+fonts {
+  name: "input_box_label"
+  font: "/assets/fonts/input box label.font"
+}
+fonts {
+  name: "is_ready_font"
+  font: "/assets/fonts/is_ready_font.font"
+}
+textures {
+  name: "main"
+  texture: "/main/main.atlas"
+}
+nodes {
+  position {
+    x: 500.0
+    y: 500.0
+  }
+  scale {
+    x: 2.0
+    y: 2.0
+  }
+  type: TYPE_BOX
+  texture: "main/menu background"
+  id: "background"
+  layer: "background"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: 97.0
+    y: 40.0
+  }
+  scale {
+    x: 0.5
+    y: 0.4
+  }
+  type: TYPE_BOX
+  texture: "main/wooden_button"
+  id: "back button"
+  adjust_mode: ADJUST_MODE_ZOOM
+  layer: "buttons"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  scale {
+    x: 0.995748
+    y: 1.003112
+  }
+  size {
+    x: 376.0
+    y: 198.0
+  }
+  color {
+    x: 0.23
+    y: 0.154
+    z: 0.003
+  }
+  type: TYPE_TEXT
+  text: "Back"
+  font: "button font"
+  id: "back text"
+  parent: "back button"
+  layer: "input boxes"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 367.0
+    y: 789.0
+  }
+  size {
+    x: 600.0
+    y: 50.0
+  }
+  type: TYPE_TEXT
+  text: "Lobbies"
+  font: "input_box_label"
+  id: "lobbies label"
+  layer: "input boxes"
+  inherit_alpha: true
+}
+nodes {
+  size {
+    x: 600.0
+    y: 50.0
+  }
+  type: TYPE_BOX
+  texture: "main/dropdown box"
+  id: "lobbies label background"
+  parent: "lobbies label"
+  layer: "input box background"
+  inherit_alpha: true
+  slice9 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  alpha: 0.8
+}
+nodes {
+  position {
+    x: -300.0
+    y: -75.0
+  }
+  size {
+    x: 600.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  font: "button font"
+  id: "lobbies text field 1 [\"name\"]"
+  pivot: PIVOT_W
+  parent: "lobbies label"
+  layer: "input boxes"
+  inherit_alpha: true
+}
+nodes {
+  size {
+    x: 600.0
+    y: 100.0
+  }
+  type: TYPE_BOX
+  texture: "main/dropdown box"
+  id: "lobbies background 1 [\"name\"]"
+  pivot: PIVOT_W
+  parent: "lobbies text field 1 [\"name\"]"
+  layer: "input box background"
+  inherit_alpha: true
+  slice9 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  alpha: 0.8
+}
+nodes {
+  position {
+    x: -300.0
+    y: -175.0
+  }
+  size {
+    x: 600.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  font: "button font"
+  id: "lobbies text field 2 [\"name\"]"
+  pivot: PIVOT_W
+  parent: "lobbies label"
+  layer: "input boxes"
+  inherit_alpha: true
+}
+nodes {
+  size {
+    x: 600.0
+    y: 100.0
+  }
+  type: TYPE_BOX
+  texture: "main/dropdown box"
+  id: "lobbies background 2 [\"name\"]"
+  pivot: PIVOT_W
+  parent: "lobbies text field 2 [\"name\"]"
+  layer: "input box background"
+  inherit_alpha: true
+  slice9 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  alpha: 0.8
+}
+nodes {
+  position {
+    x: -300.0
+    y: -275.0
+  }
+  size {
+    x: 600.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  font: "button font"
+  id: "lobbies text field 3 [\"name\"]"
+  pivot: PIVOT_W
+  parent: "lobbies label"
+  layer: "input boxes"
+  inherit_alpha: true
+}
+nodes {
+  size {
+    x: 600.0
+    y: 100.0
+  }
+  type: TYPE_BOX
+  texture: "main/dropdown box"
+  id: "lobbies background 3 [\"name\"]"
+  pivot: PIVOT_W
+  parent: "lobbies text field 3 [\"name\"]"
+  layer: "input box background"
+  inherit_alpha: true
+  slice9 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  alpha: 0.8
+}
+nodes {
+  position {
+    x: -300.0
+    y: -375.0
+  }
+  size {
+    x: 600.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  font: "button font"
+  id: "lobbies text field 4 [\"name\"]"
+  pivot: PIVOT_W
+  parent: "lobbies label"
+  layer: "input boxes"
+  inherit_alpha: true
+}
+nodes {
+  size {
+    x: 600.0
+    y: 100.0
+  }
+  type: TYPE_BOX
+  texture: "main/dropdown box"
+  id: "lobbies background 4 [\"name\"]"
+  pivot: PIVOT_W
+  parent: "lobbies text field 4 [\"name\"]"
+  layer: "input box background"
+  inherit_alpha: true
+  slice9 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  alpha: 0.8
+}
+nodes {
+  position {
+    x: -300.0
+    y: -475.0
+  }
+  size {
+    x: 600.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  font: "button font"
+  id: "lobbies text field 5 [\"name\"]"
+  pivot: PIVOT_W
+  parent: "lobbies label"
+  layer: "input boxes"
+  inherit_alpha: true
+}
+nodes {
+  size {
+    x: 600.0
+    y: 100.0
+  }
+  type: TYPE_BOX
+  texture: "main/dropdown box"
+  id: "lobbies background 5 [\"name\"]"
+  pivot: PIVOT_W
+  parent: "lobbies text field 5 [\"name\"]"
+  layer: "input box background"
+  inherit_alpha: true
+  slice9 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  alpha: 0.8
+}
+nodes {
+  position {
+    x: -300.0
+    y: -575.0
+  }
+  size {
+    x: 600.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  font: "button font"
+  id: "lobbies text field 6 [\"name\"]"
+  pivot: PIVOT_W
+  parent: "lobbies label"
+  layer: "input boxes"
+  inherit_alpha: true
+}
+nodes {
+  size {
+    x: 600.0
+    y: 100.0
+  }
+  type: TYPE_BOX
+  texture: "main/dropdown box"
+  id: "lobbies background 6 [\"name\"]"
+  pivot: PIVOT_W
+  parent: "lobbies text field 6 [\"name\"]"
+  layer: "input box background"
+  inherit_alpha: true
+  slice9 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  alpha: 0.8
+}
+nodes {
+  position {
+    x: 400.0
+  }
+  size {
+    x: 200.0
+    y: 50.0
+  }
+  type: TYPE_TEXT
+  text: "Players"
+  font: "input_box_label"
+  id: "player count label"
+  parent: "lobbies label"
+  layer: "input boxes"
+  inherit_alpha: true
+}
+nodes {
+  size {
+    x: 200.0
+    y: 50.0
+  }
+  type: TYPE_BOX
+  texture: "main/dropdown box"
+  id: "lobbies label background1"
+  parent: "player count label"
+  layer: "input box background"
+  inherit_alpha: true
+  slice9 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  alpha: 0.8
+}
+nodes {
+  position {
+    x: 400.0
+    y: -75.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  font: "button font"
+  id: "lobbies text field 1 [\"player_count\"]"
+  parent: "lobbies label"
+  layer: "input boxes"
+  inherit_alpha: true
+}
+nodes {
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_BOX
+  texture: "main/dropdown box"
+  id: "lobbies background 1 [\"player_count\"]"
+  parent: "lobbies text field 1 [\"player_count\"]"
+  layer: "input box background"
+  inherit_alpha: true
+  slice9 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  alpha: 0.8
+}
+nodes {
+  position {
+    x: 400.0
+    y: -175.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  font: "button font"
+  id: "lobbies text field 2 [\"player_count\"]"
+  parent: "lobbies label"
+  layer: "input boxes"
+  inherit_alpha: true
+}
+nodes {
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_BOX
+  texture: "main/dropdown box"
+  id: "lobbies background 2 [\"player_count\"]"
+  parent: "lobbies text field 2 [\"player_count\"]"
+  layer: "input box background"
+  inherit_alpha: true
+  slice9 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  alpha: 0.8
+}
+nodes {
+  position {
+    x: 400.0
+    y: -275.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  font: "button font"
+  id: "lobbies text field 3 [\"player_count\"]"
+  parent: "lobbies label"
+  layer: "input boxes"
+  inherit_alpha: true
+}
+nodes {
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_BOX
+  texture: "main/dropdown box"
+  id: "lobbies background 3 [\"player_count\"]"
+  parent: "lobbies text field 3 [\"player_count\"]"
+  layer: "input box background"
+  inherit_alpha: true
+  slice9 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  alpha: 0.8
+}
+nodes {
+  position {
+    x: 400.0
+    y: -375.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  font: "button font"
+  id: "lobbies text field 4 [\"player_count\"]"
+  parent: "lobbies label"
+  layer: "input boxes"
+  inherit_alpha: true
+}
+nodes {
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_BOX
+  texture: "main/dropdown box"
+  id: "lobbies background 4 [\"player_count\"]"
+  parent: "lobbies text field 4 [\"player_count\"]"
+  layer: "input box background"
+  inherit_alpha: true
+  slice9 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  alpha: 0.8
+}
+nodes {
+  position {
+    x: 400.0
+    y: -475.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  font: "button font"
+  id: "lobbies text field 5 [\"player_count\"]"
+  parent: "lobbies label"
+  layer: "input boxes"
+  inherit_alpha: true
+}
+nodes {
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_BOX
+  texture: "main/dropdown box"
+  id: "lobbies background 5 [\"player_count\"]"
+  parent: "lobbies text field 5 [\"player_count\"]"
+  layer: "input box background"
+  inherit_alpha: true
+  slice9 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  alpha: 0.8
+}
+nodes {
+  position {
+    x: 400.0
+    y: -575.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  font: "button font"
+  id: "lobbies text field 6 [\"player_count\"]"
+  parent: "lobbies label"
+  layer: "input boxes"
+  inherit_alpha: true
+}
+nodes {
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_BOX
+  texture: "main/dropdown box"
+  id: "lobbies background 6 [\"player_count\"]"
+  parent: "lobbies text field 6 [\"player_count\"]"
+  layer: "input box background"
+  inherit_alpha: true
+  slice9 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  alpha: 0.8
+}
+nodes {
+  position {
+    x: 500.0
+    y: 600.0
+  }
+  size {
+    x: 800.0
+    y: 50.0
+  }
+  color {
+    x: 0.6
+    y: 0.0
+    z: 0.0
+  }
+  type: TYPE_TEXT
+  font: "input_box_label"
+  id: "popup"
+  layer: "popup"
+  inherit_alpha: true
+  enabled: false
+}
+nodes {
+  size {
+    x: 800.0
+    y: 50.0
+  }
+  color {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  type: TYPE_BOX
+  id: "popup background"
+  adjust_mode: ADJUST_MODE_STRETCH
+  parent: "popup"
+  layer: "popup background"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+layers {
+  name: "background"
+}
+layers {
+  name: "buttons"
+}
+layers {
+  name: "input box background"
+}
+layers {
+  name: "input boxes"
+}
+layers {
+  name: "popup background"
+}
+layers {
+  name: "popup"
+}
+material: "/builtins/materials/gui.material"
+adjust_reference: ADJUST_REFERENCE_PARENT

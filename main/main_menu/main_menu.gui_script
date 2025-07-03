@@ -1,5 +1,5 @@
-require "main/libs/button"
-require "main/libs/server"
+require "assets/libs/button"
+require "assets/libs/server"
 
 
 function init(self)
@@ -27,6 +27,13 @@ end
 
 function open_create_game_menu()
 	msg.post("main:/loader#loader", "load_collection",{["proxy"] = "create_game_menu_proxy"})
+	msg.post("main:/loader#loader", "unload_collection",{["proxy"] = "main_menu_proxy"})
+end
+
+
+
+function open_join_game_menu()
+	msg.post("main:/loader#loader", "load_collection",{["proxy"] = "join_lobby_menu_proxy"})
 	msg.post("main:/loader#loader", "unload_collection",{["proxy"] = "main_menu_proxy"})
 end
 

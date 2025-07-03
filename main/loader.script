@@ -1,4 +1,4 @@
-require "main/libs/server"
+require "assets/libs/server"
 
 
 function init(self)
@@ -6,7 +6,6 @@ function init(self)
 	msg.post(".", "acquire_input_focus")
 	ProjectName = "city builder 0.1"
 	ServerUrl = "https://citybuilder-server.onrender.com/"
-	server.post("post_test",{["input"] = "Santi hat ein sehr großes Gerät"})
 end
 
 

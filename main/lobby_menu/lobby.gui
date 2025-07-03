@@ -11,6 +11,10 @@ fonts {
   name: "input_box_label"
   font: "/assets/fonts/input box label.font"
 }
+fonts {
+  name: "is_ready_font"
+  font: "/assets/fonts/is_ready_font.font"
+}
 textures {
   name: "main"
   texture: "/main/main.atlas"
@@ -182,7 +186,46 @@ nodes {
 }
 nodes {
   position {
-    x: 62.5
+    x: 906.0
+    y: 40.0
+  }
+  scale {
+    x: 0.5
+    y: 0.4
+  }
+  type: TYPE_BOX
+  texture: "main/wooden_button"
+  id: "start button"
+  adjust_mode: ADJUST_MODE_ZOOM
+  layer: "buttons"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+  enabled: false
+}
+nodes {
+  scale {
+    x: 0.995748
+    y: 1.003112
+  }
+  size {
+    x: 376.0
+    y: 198.0
+  }
+  color {
+    x: 0.23
+    y: 0.154
+    z: 0.003
+  }
+  type: TYPE_TEXT
+  text: "Start"
+  font: "button font"
+  id: "start text"
+  parent: "start button"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 81.5
     y: 700.0
   }
   size {
@@ -192,7 +235,7 @@ nodes {
   type: TYPE_TEXT
   text: "5"
   font: "button font"
-  id: "map width "
+  id: "map width"
   layer: "input boxes"
   inherit_alpha: true
 }
@@ -209,7 +252,7 @@ nodes {
   font: "input_box_label"
   id: "map width label"
   pivot: PIVOT_S
-  parent: "map width "
+  parent: "map width"
   layer: "input boxes"
   inherit_alpha: true
 }
@@ -241,7 +284,7 @@ nodes {
   type: TYPE_BOX
   texture: "main/dropdown box"
   id: "map width box"
-  parent: "map width "
+  parent: "map width"
   layer: "input box background"
   inherit_alpha: true
   slice9 {
@@ -254,7 +297,7 @@ nodes {
 }
 nodes {
   position {
-    x: 212.5
+    x: 231.5
     y: 700.0
   }
   size {
@@ -326,7 +369,7 @@ nodes {
 }
 nodes {
   position {
-    x: 428.0
+    x: 447.0
     y: 700.0
   }
   size {
@@ -388,23 +431,378 @@ nodes {
     x: 120.0
     y: 25.0
   }
-  color {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-  }
   type: TYPE_BOX
+  texture: "main/dropdown box"
   id: "privacy label box"
   pivot: PIVOT_S
   parent: "privacy label"
   layer: "dropdown background1"
   inherit_alpha: true
+  slice9 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
   alpha: 0.8
-  size_mode: SIZE_MODE_AUTO
 }
 nodes {
   position {
-    x: 784.0
+    y: 585.0
+  }
+  size {
+    x: 100.0
+  }
+  type: TYPE_TEXT
+  text: "Players"
+  font: "input_box_label"
+  id: "players label"
+  pivot: PIVOT_SW
+  layer: "dropdown1"
+}
+nodes {
+  size {
+    x: 100.0
+    y: 25.0
+  }
+  type: TYPE_BOX
+  texture: "main/dropdown box"
+  id: "players label box"
+  pivot: PIVOT_SW
+  parent: "players label"
+  layer: "dropdown background1"
+  inherit_alpha: true
+  slice9 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  alpha: 0.8
+}
+nodes {
+  position {
+    y: -50.0
+  }
+  size {
+    x: 600.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  font: "button font"
+  id: "player 1"
+  pivot: PIVOT_W
+  parent: "players label"
+  layer: "dropdown1"
+}
+nodes {
+  size {
+    x: 600.0
+    y: 100.0
+  }
+  type: TYPE_BOX
+  texture: "main/dropdown box"
+  id: "player 1 box"
+  pivot: PIVOT_W
+  parent: "player 1"
+  layer: "dropdown background1"
+  inherit_alpha: true
+  slice9 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  alpha: 0.8
+}
+nodes {
+  position {
+    x: 650.0
+  }
+  size {
+    x: 100.0
+    y: 100.0
+  }
+  color {
+    x: 0.0
+    z: 0.0
+  }
+  type: TYPE_TEXT
+  font: "is_ready_font"
+  id: "player 1 ready"
+  parent: "player 1"
+}
+nodes {
+  size {
+    x: 100.0
+    y: 100.0
+  }
+  type: TYPE_BOX
+  texture: "main/dropdown box"
+  id: "player 1 ready box"
+  parent: "player 1 ready"
+  inherit_alpha: true
+  slice9 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  alpha: 0.8
+}
+nodes {
+  position {
+    y: -150.0
+  }
+  size {
+    x: 600.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  font: "button font"
+  id: "player 2"
+  pivot: PIVOT_W
+  parent: "players label"
+  layer: "dropdown1"
+}
+nodes {
+  size {
+    x: 600.0
+    y: 100.0
+  }
+  type: TYPE_BOX
+  texture: "main/dropdown box"
+  id: "player 2 box"
+  pivot: PIVOT_W
+  parent: "player 2"
+  layer: "dropdown background1"
+  inherit_alpha: true
+  slice9 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  alpha: 0.8
+}
+nodes {
+  position {
+    x: 650.0
+  }
+  size {
+    x: 100.0
+    y: 100.0
+  }
+  color {
+    x: 0.0
+    z: 0.0
+  }
+  type: TYPE_TEXT
+  font: "is_ready_font"
+  id: "player 2 ready"
+  parent: "player 2"
+  inherit_alpha: true
+}
+nodes {
+  size {
+    x: 100.0
+    y: 100.0
+  }
+  type: TYPE_BOX
+  texture: "main/dropdown box"
+  id: "player 2 ready box2"
+  parent: "player 2 ready"
+  inherit_alpha: true
+  slice9 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  alpha: 0.8
+}
+nodes {
+  position {
+    y: -250.0
+  }
+  size {
+    x: 600.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  font: "button font"
+  id: "player 3"
+  pivot: PIVOT_W
+  parent: "players label"
+  layer: "dropdown1"
+}
+nodes {
+  size {
+    x: 600.0
+    y: 100.0
+  }
+  type: TYPE_BOX
+  texture: "main/dropdown box"
+  id: "player 3 box"
+  pivot: PIVOT_W
+  parent: "player 3"
+  layer: "dropdown background1"
+  inherit_alpha: true
+  slice9 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  alpha: 0.8
+}
+nodes {
+  position {
+    x: 650.0
+  }
+  size {
+    x: 100.0
+    y: 100.0
+  }
+  color {
+    x: 0.0
+    z: 0.0
+  }
+  type: TYPE_TEXT
+  font: "is_ready_font"
+  id: "player 3 ready"
+  parent: "player 3"
+  inherit_alpha: true
+}
+nodes {
+  size {
+    x: 100.0
+    y: 100.0
+  }
+  type: TYPE_BOX
+  texture: "main/dropdown box"
+  id: "player 3 ready box"
+  parent: "player 3 ready"
+  inherit_alpha: true
+  slice9 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  alpha: 0.8
+}
+nodes {
+  position {
+    y: -350.0
+  }
+  size {
+    x: 600.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  font: "button font"
+  id: "player 4"
+  pivot: PIVOT_W
+  parent: "players label"
+  layer: "dropdown1"
+}
+nodes {
+  size {
+    x: 600.0
+    y: 100.0
+  }
+  type: TYPE_BOX
+  texture: "main/dropdown box"
+  id: "player 4 box"
+  pivot: PIVOT_W
+  parent: "player 4"
+  layer: "dropdown background1"
+  inherit_alpha: true
+  slice9 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  alpha: 0.8
+}
+nodes {
+  position {
+    x: 650.0
+  }
+  size {
+    x: 100.0
+    y: 100.0
+  }
+  color {
+    x: 0.0
+    z: 0.0
+  }
+  type: TYPE_TEXT
+  font: "is_ready_font"
+  id: "player 4 ready"
+  parent: "player 4"
+  inherit_alpha: true
+}
+nodes {
+  size {
+    x: 100.0
+    y: 100.0
+  }
+  type: TYPE_BOX
+  texture: "main/dropdown box"
+  id: "player 4 ready box"
+  parent: "player 4 ready"
+  inherit_alpha: true
+  slice9 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  alpha: 0.8
+}
+nodes {
+  position {
+    x: 650.0
+  }
+  size {
+    x: 100.0
+    y: 25.0
+  }
+  type: TYPE_TEXT
+  text: "Ready"
+  font: "input_box_label"
+  id: "ready label"
+  pivot: PIVOT_S
+  parent: "players label"
+  layer: "input boxes"
+  inherit_alpha: true
+}
+nodes {
+  size {
+    x: 100.0
+    y: 25.0
+  }
+  type: TYPE_BOX
+  texture: "main/dropdown box"
+  id: "ready label box"
+  pivot: PIVOT_S
+  parent: "ready label"
+  layer: "input box background"
+  inherit_alpha: true
+  slice9 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  alpha: 0.8
+}
+nodes {
+  position {
+    x: 803.0
     y: 700.0
   }
   size {
@@ -465,19 +863,20 @@ nodes {
     x: 150.0
     y: 25.0
   }
-  color {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-  }
   type: TYPE_BOX
+  texture: "main/dropdown box"
   id: "session label box"
   pivot: PIVOT_S
   parent: "session label"
   layer: "dropdown background1"
   inherit_alpha: true
+  slice9 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
   alpha: 0.8
-  size_mode: SIZE_MODE_AUTO
 }
 layers {
   name: "background"

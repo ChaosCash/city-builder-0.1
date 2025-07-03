@@ -1,7 +1,7 @@
-require "main/libs/input_box"
-require "main/libs/button"
-require "main/libs/dropdown"
-require "main/libs/scroll_input"
+require "assets/libs/input_box"
+require "assets/libs/button"
+require "assets/libs/dropdown"
+require "assets/libs/scroll_input"
 
 function init(self)
 	msg.post(".", "acquire_input_focus")
@@ -17,7 +17,7 @@ function init(self)
 	input_box.set_cursor(gui.get_node("cursor"))
 	
 	button.add("back button", "back", go_back)
-	button.add("create button", "create", create_game)
+	button.add("create button", "create", create_lobby)
 	
 	dropdown.add("privacy dropdown", "privacy")
 	dropdown.add("session type dropdown", "session_type")
@@ -38,8 +38,17 @@ end
 
 
 
-function create_game()
-	if server.post("create_lobby", json.encode({["name"] = input_box.get_text("game_name"), ["session_type"] = dropdown.get_selected_option("session_type"), ["privacy"] = dropdown.get_selected_option("privacy"), ["map_width"] = scroll_input.get_value("map_width"), ["map_height"] = scroll_input.get_value("map_height")})) then
+function create_lobby()
+	CurLobby = {["name"] = input_box.get_text("game_name"), ["session_type"] = dropdown.get_selected_option("session_type"), ["privacy"] = dropdown.get_selected_option("privacy"), ["map_width"] = scroll_input.get_value("map_width"), ["map_height"] = scroll_input.get_value("map_height")}
+	server.post("create_lobby", CurLobby, open_lobby_menu)
+end
+
+
+
+
+function open_lobby_menu(self, id, response)
+	if response.response == '"lobby created"' then
+		CurLobby["players"] = {[1] = {["name"] = Account["name"], ["display_name"] = Account["display_name"], ["is_ready"] = true}}
 		msg.post("main:/loader#loader", "load_collection",{["proxy"] = "lobby_menu_proxy"})
 		msg.post("main:/loader#loader", "unload_collection",{["proxy"] = "create_game_menu_proxy"})
 	end
