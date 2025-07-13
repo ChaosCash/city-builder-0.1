@@ -14,7 +14,6 @@ end
 
 
 
-
 function logout()
 	server.post("logout",nil,function()
 		msg.post("main:/loader#loader", "load_collection",{["proxy"] = "account_menu_proxy"})
