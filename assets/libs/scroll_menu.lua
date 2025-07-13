@@ -44,7 +44,6 @@ function scroll_menu.add(node_id, scroll_menu_name, click_function)
 
 	for k,node in pairs(gui.get_tree(gui.get_node(node_id))) do
 		local node_name = tostring(k)
-
 		if string.find(node_name, "text field") then
 			local text_field_number = tonumber(node_name:match('text field (%d*)'))
 			local key = node_name:match('%["(.*)"%]')

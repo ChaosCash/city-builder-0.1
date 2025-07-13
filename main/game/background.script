@@ -1,5 +1,5 @@
 function on_message(self, message_id, message, sender)
 	if message_id == hash("sending_map_size") then
-		go.set_position(vmath.vector3(message[1] / 2 * message[3], message[2] / 2 * message[3], 0))
+		go.set_position(vmath.vector3(message[1] / 2 * message[3], message[2] / 2 * message[3], -1))
 	end
 end

@@ -17,7 +17,7 @@ textures {
 }
 nodes {
   position {
-    x: 500.0
+    x: 1000.0
     y: 500.0
   }
   scale {
@@ -25,7 +25,7 @@ nodes {
     y: 2.0
   }
   type: TYPE_BOX
-  texture: "main/menu background"
+  texture: "main/pergament background"
   id: "background"
   layer: "background"
   inherit_alpha: true
@@ -33,7 +33,7 @@ nodes {
 }
 nodes {
   position {
-    x: 500.0
+    x: 1000.0
     y: 800.0
   }
   scale {
@@ -42,7 +42,7 @@ nodes {
   type: TYPE_BOX
   texture: "main/wooden_button"
   id: "log in button"
-  adjust_mode: ADJUST_MODE_ZOOM
+  yanchor: YANCHOR_TOP
   layer: "buttons"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
@@ -70,7 +70,7 @@ nodes {
 }
 nodes {
   position {
-    x: 500.0
+    x: 1000.0
     y: 500.0
   }
   scale {
@@ -79,7 +79,7 @@ nodes {
   type: TYPE_BOX
   texture: "main/wooden_button"
   id: "register button"
-  adjust_mode: ADJUST_MODE_ZOOM
+  yanchor: YANCHOR_TOP
   layer: "buttons"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
@@ -108,7 +108,7 @@ nodes {
 }
 nodes {
   position {
-    x: 500.0
+    x: 1000.0
     y: 633.0
   }
   size {
@@ -118,14 +118,57 @@ nodes {
   type: TYPE_TEXT
   font: "button font"
   id: "name input"
+  yanchor: YANCHOR_TOP
   layer: "input boxes"
   inherit_alpha: true
   enabled: false
 }
 nodes {
+  size {
+    x: 600.0
+    y: 100.0
+  }
+  type: TYPE_BOX
+  texture: "main/dropdown box"
+  id: "name background"
+  parent: "name input"
+  layer: "input box background"
+  inherit_alpha: true
+  slice9 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  alpha: 0.8
+}
+nodes {
   position {
     x: -300.0
     y: 50.0
+  }
+  size {
+    x: 100.0
+    y: 25.0
+  }
+  type: TYPE_BOX
+  texture: "main/dropdown box"
+  id: "name label background"
+  pivot: PIVOT_SW
+  parent: "name input"
+  layer: "input box background"
+  inherit_alpha: true
+  slice9 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  alpha: 0.8
+}
+nodes {
+  position {
+    x: 3.0
   }
   size {
     x: 100.0
@@ -136,31 +179,13 @@ nodes {
   font: "input_box_label"
   id: "name label"
   pivot: PIVOT_SW
-  parent: "name input"
-  layer: "input box background"
+  parent: "name label background"
+  layer: "input boxes"
   inherit_alpha: true
-}
-nodes {
-  size {
-    x: 600.0
-    y: 100.0
-  }
-  color {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-  }
-  type: TYPE_BOX
-  id: "name background"
-  parent: "name input"
-  layer: "input box background"
-  inherit_alpha: true
-  alpha: 0.69
-  size_mode: SIZE_MODE_AUTO
 }
 nodes {
   position {
-    x: 500.0
+    x: 1000.0
     y: 450.0
   }
   size {
@@ -170,14 +195,57 @@ nodes {
   type: TYPE_TEXT
   font: "button font"
   id: "password input"
+  yanchor: YANCHOR_TOP
   layer: "input boxes"
   inherit_alpha: true
   enabled: false
 }
 nodes {
+  size {
+    x: 600.0
+    y: 100.0
+  }
+  type: TYPE_BOX
+  texture: "main/dropdown box"
+  id: "password background"
+  parent: "password input"
+  layer: "input box background"
+  inherit_alpha: true
+  slice9 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  alpha: 0.8
+}
+nodes {
   position {
     x: -300.0
     y: 50.0
+  }
+  size {
+    x: 100.0
+    y: 25.0
+  }
+  type: TYPE_BOX
+  texture: "main/dropdown box"
+  id: "password label background"
+  pivot: PIVOT_SW
+  parent: "password input"
+  layer: "input box background"
+  inherit_alpha: true
+  slice9 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+    w: 1.0
+  }
+  alpha: 0.8
+}
+nodes {
+  position {
+    x: 3.0
   }
   size {
     x: 100.0
@@ -188,31 +256,13 @@ nodes {
   font: "input_box_label"
   id: "password label"
   pivot: PIVOT_SW
-  parent: "password input"
-  layer: "input box background"
+  parent: "password label background"
+  layer: "input boxes"
   inherit_alpha: true
-}
-nodes {
-  size {
-    x: 600.0
-    y: 100.0
-  }
-  color {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-  }
-  type: TYPE_BOX
-  id: "password background"
-  parent: "password input"
-  layer: "input box background"
-  inherit_alpha: true
-  alpha: 0.69
-  size_mode: SIZE_MODE_AUTO
 }
 nodes {
   position {
-    x: 500.0
+    x: 1000.0
     y: 600.0
   }
   size {
@@ -227,6 +277,7 @@ nodes {
   type: TYPE_TEXT
   font: "input_box_label"
   id: "popup"
+  yanchor: YANCHOR_TOP
   layer: "popup"
   inherit_alpha: true
   enabled: false
@@ -264,10 +315,6 @@ nodes {
   enabled: false
 }
 nodes {
-  position {
-    x: 97.0
-    y: 45.0
-  }
   scale {
     x: 0.5
     y: 0.4
@@ -275,13 +322,19 @@ nodes {
   type: TYPE_BOX
   texture: "main/wooden_button"
   id: "back button"
-  adjust_mode: ADJUST_MODE_ZOOM
+  xanchor: XANCHOR_LEFT
+  yanchor: YANCHOR_BOTTOM
+  pivot: PIVOT_SW
   layer: "buttons"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
   enabled: false
 }
 nodes {
+  position {
+    x: 188.0
+    y: 100.0
+  }
   scale {
     x: 0.995748
     y: 1.003112
@@ -304,7 +357,7 @@ nodes {
 }
 nodes {
   position {
-    x: 500.0
+    x: 1000.0
     y: 600.0
   }
   size {
@@ -320,6 +373,7 @@ nodes {
   text: "Connecting to server..."
   font: "input_box_label"
   id: "connecting to server popup"
+  yanchor: YANCHOR_TOP
   layer: "popup"
   inherit_alpha: true
   enabled: false

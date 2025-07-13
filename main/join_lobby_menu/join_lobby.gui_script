@@ -41,7 +41,7 @@ function update_lobbies(self, id, response)
 	
 	if type(response) == "table" then
 		for k, lobby in pairs(response) do
-			lobby["player_count"] = table.maxn(lobby["players"]) .. "/4"
+			lobby["player_count"] = table.maxn(lobby["players"]) .. "/" .. lobby["max_players"]
 			response[tonumber(k)] = response[k]
 		end
 	end

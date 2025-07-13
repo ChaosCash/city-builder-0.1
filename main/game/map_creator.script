@@ -1,3 +1,6 @@
+require "assets/libs/game"
+
+
 function init(self)
 	local tile_types = {
 		"plains",
@@ -11,17 +14,9 @@ function init(self)
 	self.map_height = 10
 	self.map = {height = self.height, width = self.width, tiles = {}}
 	self.tile_ids = {}
+	
 
-	for x = 1, self.map_width do
-		self.map["tiles"][x] = {}
-		self.tile_ids[x] = {}
-		for y = 1, self.map_height do
-			local cur_tyle_type = tile_types[math.random(1,tile_count)]
-			local go_id = factory.create("#" .. cur_tyle_type , vmath.vector3((x-1) * 100, (y-1) * 100, 0))
-			self.tile_ids[x][y] = go_id
-			self.map["tiles"][x][y] = create_tile_properties[cur_tyle_type]()
-		end
-	end
+		game.print_map()
 	
 	
 	msg.post("camera", "sending_map_size", {self.map_width,self.map_height,100})

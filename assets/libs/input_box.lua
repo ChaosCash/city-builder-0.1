@@ -18,6 +18,11 @@ local cursor_is_visible = false
 local cursor_is_enabled = true
 
 
+local last_width, last_height = window.get_size()
+
+
+
+
 
 function input_box.reset()
 	added_boxes = {}
@@ -87,6 +92,7 @@ function input_box.set_cursor(cursor_node)
 	cursor = cursor_node
 	cursor_timer = timer.delay(cursor_interval, true, 
 	function ()
+		check_resize()
 		cursor_is_visible = not cursor_is_visible
 		gui.set_enabled(cursor, cursor_is_visible and cursor_is_enabled)
 	end)
@@ -94,7 +100,7 @@ end
 
 
 
-local function update_cursor_position(action_id, action)
+function update_cursor_position(action_id, action)
 	if not cursor then
 		return
 	end
@@ -110,12 +116,12 @@ local function update_cursor_position(action_id, action)
 	local node = focused_box["node"]
 
 	if action or action_id then
-		if not (action_id == action_name_tab or action_id == action_name_enter or action_id == action_name_backspace or action_id == action_name_text or (action_id == action_name_click and action.pressed and gui.pick_node(node, action.x, action.y))) then
+		if not (action_id == "resized" or action_id == action_name_tab or action_id == action_name_enter or action_id == action_name_backspace or action_id == action_name_text or (action_id == action_name_click and action.pressed and gui.pick_node(node, action.x, action.y))) then
 			return
 		end
 	end
 	
-	local box_pos = gui.get_position(node)
+	local box_pos = gui.get_screen_position(node)
 	local new_x = box_pos["x"]
 	local new_y = box_pos["y"]
 	local text_width = gui.get_text_metrics_from_node(node)["width"]
@@ -125,13 +131,13 @@ local function update_cursor_position(action_id, action)
 	if pivot == gui.PIVOT_CENTER then
 		new_x = new_x + text_width * 0.5
 	elseif pivot == gui.PIVOT_W then
-		new_x = new_x + text_width
+		new_x = new_x + text_width * 0.96
 	elseif pivot ~= gui.PIVOT_W then
-		error("This pivot is not supported. Node: " .. gui.get_id(node), level)
+		error("This pivot is not supported. Node: " .. gui.get_id(node))
 	end
 	
 
-	gui.set_position(cursor, vmath.vector3(new_x , new_y, 0))
+	gui.set_screen_position(cursor, vmath.vector3(new_x , new_y, 0))
 end
 
 
@@ -199,7 +205,6 @@ end
 
 
 function input_box.on_input(action_id, action)
-	
 	if action_id == action_name_click then
 		if action.pressed then
 			for box_name, box in pairs(added_boxes) do
@@ -267,4 +272,15 @@ function input_box.on_input(action_id, action)
 
 
 	update_cursor_position(action_id, action)
+end
+
+
+
+function check_resize()
+	local cur_width, cur_height = window.get_size()
+	if cur_width ~= last_width or cur_height ~= last_width then
+		last_width = cur_width
+		last_height = cur_height
+		update_cursor_position("resized")
+	end
 end

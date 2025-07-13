@@ -1,0 +1,10 @@
+images {
+  image: "/assets/images/forest tile.png"
+}
+images {
+  image: "/assets/images/mountains tile.png"
+}
+images {
+  image: "/assets/images/plains tile.png"
+}
+extrude_borders: 2

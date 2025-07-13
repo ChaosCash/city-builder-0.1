@@ -2,10 +2,12 @@ require "assets/libs/server"
 
 
 function init(self)
+	math.randomseed(os.time())
 	msg.post("#account_menu_proxy", "load")
 	msg.post(".", "acquire_input_focus")
 	ProjectName = "city builder 0.1"
-	ServerUrl = "https://citybuilder-server.onrender.com/"
+	Version = "0.1"
+	ServerUrl = "http://127.0.0.1:8000/"
 end
 
 

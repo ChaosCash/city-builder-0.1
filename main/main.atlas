@@ -1,13 +1,4 @@
 images {
-  image: "/assets/images/forest tile.png"
-}
-images {
-  image: "/assets/images/mountains tile.png"
-}
-images {
-  image: "/assets/images/plains tile.png"
-}
-images {
   image: "/assets/images/water_background.jpg"
 }
 images {
@@ -18,5 +9,8 @@ images {
 }
 images {
   image: "/assets/images/dropdown box.png"
+}
+images {
+  image: "/assets/images/pergament background.jpg"
 }
 extrude_borders: 2

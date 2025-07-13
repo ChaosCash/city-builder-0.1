@@ -36,5 +36,11 @@ embedded_instances {
   "  data: \"collection: \\\"/main/join_lobby_menu/join_lobby.collection\\\"\\n"
   "\"\n"
   "}\n"
+  "embedded_components {\n"
+  "  id: \"game_proxy\"\n"
+  "  type: \"collectionproxy\"\n"
+  "  data: \"collection: \\\"/main/game/game.collection\\\"\\n"
+  "\"\n"
+  "}\n"
   ""
 }

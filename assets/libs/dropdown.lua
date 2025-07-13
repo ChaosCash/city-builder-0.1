@@ -7,7 +7,7 @@ dropdown = {}
 
 
 function dropdown.get_selected_option(dropdown_name)
-return gui.get_text(added_dropdowns[dropdown_name]["selected_option"])
+	return gui.get_text(added_dropdowns[dropdown_name]["options"][1])
 end
 
 
@@ -25,9 +25,10 @@ end
 
 
 function dropdown.add(node_id, dropdown_name, is_open)
-	local cur_dropdown = {["selected_option"] = gui.get_node(node_id), ["options"] = {}, ["is_open"] = is_open or false}
+	local cur_dropdown_tree = gui.get_tree(gui.get_node(node_id))
+	local cur_dropdown = {["options"] = {}, ["is_open"] = is_open or false}
 	
-	for k,v in pairs(gui.get_tree(gui.get_node(node_id))) do
+	for k,v in pairs(cur_dropdown_tree) do
 		local node_name = tostring(k)
 		
 		if string.find(node_name, "arrow down") then
@@ -55,15 +56,17 @@ function dropdown.on_input(action_id, action)
 					for option, option_node in pairs(dropdown["options"]) do
 						if gui.pick_node(option_node, action.x, action.y) then
 							local option_text = gui.get_text(option_node)
-							gui.set_text(option_node, gui.get_text(dropdown["selected_option"]))
-							gui.set_text(dropdown["selected_option"], option_text)
+							gui.set_text(option_node, gui.get_text(dropdown["options"][1]))
+							gui.set_text(dropdown["options"][1], option_text)
 							
 							dropdown["is_open"] = false
 							gui.set_enabled(dropdown["arrow_up"], false)
 							gui.set_enabled(dropdown["arrow_down"], true)
 							
 							for option, option_node in pairs(dropdown["options"]) do
-								gui.set_enabled(option_node, false)
+								if option ~= 1 then
+									gui.set_enabled(option_node, false)
+								end
 							end
 							return
 						end
@@ -73,10 +76,12 @@ function dropdown.on_input(action_id, action)
 			
 			
 			for name, dropdown in pairs(added_dropdowns) do
-				if gui.pick_node(dropdown["selected_option"], action.x, action.y) then
+				if gui.pick_node(dropdown["options"][1], action.x, action.y) then
 					dropdown["is_open"] = not dropdown["is_open"]
 					for option, option_node in pairs(dropdown["options"]) do
-						gui.set_enabled(option_node, dropdown["is_open"])
+						if option ~= 1 then
+							gui.set_enabled(option_node, dropdown["is_open"])
+						end
 					end
 					gui.set_enabled(dropdown["arrow_up"], dropdown["is_open"])
 					gui.set_enabled(dropdown["arrow_down"], not dropdown["is_open"])

@@ -29,17 +29,13 @@ nodes {
     y: 2.0
   }
   type: TYPE_BOX
-  texture: "main/menu background"
+  texture: "main/pergament background"
   id: "background"
   layer: "background"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
 }
 nodes {
-  position {
-    x: 97.0
-    y: 40.0
-  }
   scale {
     x: 0.5
     y: 0.4
@@ -47,12 +43,18 @@ nodes {
   type: TYPE_BOX
   texture: "main/wooden_button"
   id: "back button"
-  adjust_mode: ADJUST_MODE_ZOOM
+  xanchor: XANCHOR_LEFT
+  yanchor: YANCHOR_BOTTOM
+  pivot: PIVOT_SW
   layer: "buttons"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
 }
 nodes {
+  position {
+    x: 188.0
+    y: 100.0
+  }
   scale {
     x: 0.995748
     y: 1.003112
@@ -98,6 +100,7 @@ nodes {
   type: TYPE_BOX
   texture: "main/dropdown box"
   id: "lobbies label background"
+  yanchor: YANCHOR_TOP
   parent: "lobbies label"
   layer: "input box background"
   inherit_alpha: true
@@ -118,24 +121,11 @@ nodes {
     x: 600.0
     y: 100.0
   }
-  type: TYPE_TEXT
-  font: "button font"
-  id: "lobbies text field 1 [\"name\"]"
-  pivot: PIVOT_W
-  parent: "lobbies label"
-  layer: "input boxes"
-  inherit_alpha: true
-}
-nodes {
-  size {
-    x: 600.0
-    y: 100.0
-  }
   type: TYPE_BOX
   texture: "main/dropdown box"
   id: "lobbies background 1 [\"name\"]"
   pivot: PIVOT_W
-  parent: "lobbies text field 1 [\"name\"]"
+  parent: "lobbies label"
   layer: "input box background"
   inherit_alpha: true
   slice9 {
@@ -145,6 +135,22 @@ nodes {
     w: 1.0
   }
   alpha: 0.8
+}
+nodes {
+  position {
+    x: 8.0
+  }
+  size {
+    x: 600.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  font: "button font"
+  id: "lobbies text field 1 [\"name\"]"
+  pivot: PIVOT_W
+  parent: "lobbies background 1 [\"name\"]"
+  layer: "input boxes"
+  inherit_alpha: true
 }
 nodes {
   position {
@@ -155,24 +161,11 @@ nodes {
     x: 600.0
     y: 100.0
   }
-  type: TYPE_TEXT
-  font: "button font"
-  id: "lobbies text field 2 [\"name\"]"
-  pivot: PIVOT_W
-  parent: "lobbies label"
-  layer: "input boxes"
-  inherit_alpha: true
-}
-nodes {
-  size {
-    x: 600.0
-    y: 100.0
-  }
   type: TYPE_BOX
   texture: "main/dropdown box"
   id: "lobbies background 2 [\"name\"]"
   pivot: PIVOT_W
-  parent: "lobbies text field 2 [\"name\"]"
+  parent: "lobbies label"
   layer: "input box background"
   inherit_alpha: true
   slice9 {
@@ -182,6 +175,22 @@ nodes {
     w: 1.0
   }
   alpha: 0.8
+}
+nodes {
+  position {
+    x: 8.0
+  }
+  size {
+    x: 600.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  font: "button font"
+  id: "lobbies text field 2 [\"name\"]"
+  pivot: PIVOT_W
+  parent: "lobbies background 2 [\"name\"]"
+  layer: "input boxes"
+  inherit_alpha: true
 }
 nodes {
   position {
@@ -192,24 +201,11 @@ nodes {
     x: 600.0
     y: 100.0
   }
-  type: TYPE_TEXT
-  font: "button font"
-  id: "lobbies text field 3 [\"name\"]"
-  pivot: PIVOT_W
-  parent: "lobbies label"
-  layer: "input boxes"
-  inherit_alpha: true
-}
-nodes {
-  size {
-    x: 600.0
-    y: 100.0
-  }
   type: TYPE_BOX
   texture: "main/dropdown box"
   id: "lobbies background 3 [\"name\"]"
   pivot: PIVOT_W
-  parent: "lobbies text field 3 [\"name\"]"
+  parent: "lobbies label"
   layer: "input box background"
   inherit_alpha: true
   slice9 {
@@ -219,6 +215,22 @@ nodes {
     w: 1.0
   }
   alpha: 0.8
+}
+nodes {
+  position {
+    x: 8.0
+  }
+  size {
+    x: 600.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  font: "button font"
+  id: "lobbies text field 3 [\"name\"]"
+  pivot: PIVOT_W
+  parent: "lobbies background 3 [\"name\"]"
+  layer: "input boxes"
+  inherit_alpha: true
 }
 nodes {
   position {
@@ -229,24 +241,11 @@ nodes {
     x: 600.0
     y: 100.0
   }
-  type: TYPE_TEXT
-  font: "button font"
-  id: "lobbies text field 4 [\"name\"]"
-  pivot: PIVOT_W
-  parent: "lobbies label"
-  layer: "input boxes"
-  inherit_alpha: true
-}
-nodes {
-  size {
-    x: 600.0
-    y: 100.0
-  }
   type: TYPE_BOX
   texture: "main/dropdown box"
   id: "lobbies background 4 [\"name\"]"
   pivot: PIVOT_W
-  parent: "lobbies text field 4 [\"name\"]"
+  parent: "lobbies label"
   layer: "input box background"
   inherit_alpha: true
   slice9 {
@@ -256,6 +255,22 @@ nodes {
     w: 1.0
   }
   alpha: 0.8
+}
+nodes {
+  position {
+    x: 8.0
+  }
+  size {
+    x: 600.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  font: "button font"
+  id: "lobbies text field 4 [\"name\"]"
+  pivot: PIVOT_W
+  parent: "lobbies background 4 [\"name\"]"
+  layer: "input boxes"
+  inherit_alpha: true
 }
 nodes {
   position {
@@ -266,24 +281,11 @@ nodes {
     x: 600.0
     y: 100.0
   }
-  type: TYPE_TEXT
-  font: "button font"
-  id: "lobbies text field 5 [\"name\"]"
-  pivot: PIVOT_W
-  parent: "lobbies label"
-  layer: "input boxes"
-  inherit_alpha: true
-}
-nodes {
-  size {
-    x: 600.0
-    y: 100.0
-  }
   type: TYPE_BOX
   texture: "main/dropdown box"
   id: "lobbies background 5 [\"name\"]"
   pivot: PIVOT_W
-  parent: "lobbies text field 5 [\"name\"]"
+  parent: "lobbies label"
   layer: "input box background"
   inherit_alpha: true
   slice9 {
@@ -296,8 +298,7 @@ nodes {
 }
 nodes {
   position {
-    x: -300.0
-    y: -575.0
+    x: 8.0
   }
   size {
     x: 600.0
@@ -305,13 +306,17 @@ nodes {
   }
   type: TYPE_TEXT
   font: "button font"
-  id: "lobbies text field 6 [\"name\"]"
+  id: "lobbies text field 5 [\"name\"]"
   pivot: PIVOT_W
-  parent: "lobbies label"
+  parent: "lobbies background 5 [\"name\"]"
   layer: "input boxes"
   inherit_alpha: true
 }
 nodes {
+  position {
+    x: -300.0
+    y: -575.0
+  }
   size {
     x: 600.0
     y: 100.0
@@ -320,7 +325,7 @@ nodes {
   texture: "main/dropdown box"
   id: "lobbies background 6 [\"name\"]"
   pivot: PIVOT_W
-  parent: "lobbies text field 6 [\"name\"]"
+  parent: "lobbies label"
   layer: "input box background"
   inherit_alpha: true
   slice9 {
@@ -330,6 +335,22 @@ nodes {
     w: 1.0
   }
   alpha: 0.8
+}
+nodes {
+  position {
+    x: 8.0
+  }
+  size {
+    x: 600.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  font: "button font"
+  id: "lobbies text field 6 [\"name\"]"
+  pivot: PIVOT_W
+  parent: "lobbies background 6 [\"name\"]"
+  layer: "input boxes"
+  inherit_alpha: true
 }
 nodes {
   position {

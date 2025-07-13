@@ -9,7 +9,7 @@ textures {
 }
 nodes {
   position {
-    x: 500.0
+    x: 1000.0
     y: 500.0
   }
   scale {
@@ -17,7 +17,7 @@ nodes {
     y: 2.0
   }
   type: TYPE_BOX
-  texture: "main/menu background"
+  texture: "main/pergament background"
   id: "background"
   layer: "background"
   inherit_alpha: true
@@ -25,7 +25,7 @@ nodes {
 }
 nodes {
   position {
-    x: 500.0
+    x: 1000.0
     y: 800.0
   }
   scale {
@@ -34,16 +34,12 @@ nodes {
   type: TYPE_BOX
   texture: "main/wooden_button"
   id: "create game button"
-  adjust_mode: ADJUST_MODE_ZOOM
+  yanchor: YANCHOR_TOP
   layer: "buttons"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
 }
 nodes {
-  scale {
-    x: 0.995748
-    y: 1.003112
-  }
   size {
     x: 376.0
     y: 198.0
@@ -62,7 +58,7 @@ nodes {
 }
 nodes {
   position {
-    x: 500.0
+    x: 1000.0
     y: 500.0
   }
   scale {
@@ -71,16 +67,12 @@ nodes {
   type: TYPE_BOX
   texture: "main/wooden_button"
   id: "join game button"
-  adjust_mode: ADJUST_MODE_ZOOM
+  yanchor: YANCHOR_TOP
   layer: "buttons"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
 }
 nodes {
-  scale {
-    x: 0.995748
-    y: 1.003112
-  }
   size {
     x: 376.0
     y: 198.0
@@ -98,10 +90,6 @@ nodes {
   inherit_alpha: true
 }
 nodes {
-  position {
-    x: 97.0
-    y: 45.0
-  }
   scale {
     x: 0.5
     y: 0.4
@@ -109,12 +97,18 @@ nodes {
   type: TYPE_BOX
   texture: "main/wooden_button"
   id: "logout button"
-  adjust_mode: ADJUST_MODE_ZOOM
+  xanchor: XANCHOR_LEFT
+  yanchor: YANCHOR_BOTTOM
+  pivot: PIVOT_SW
   layer: "buttons"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
 }
 nodes {
+  position {
+    x: 188.0
+    y: 100.0
+  }
   scale {
     x: 0.995748
     y: 1.003112

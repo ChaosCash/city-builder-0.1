@@ -6,6 +6,7 @@ server = {}
 
 
 function server.post(path, request_body, callback_function)
+	
 	if type(request_body) == "table" then
 		content_type = "application/json"
 		request_body = json.encode(request_body)

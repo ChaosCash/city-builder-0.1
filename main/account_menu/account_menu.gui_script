@@ -28,7 +28,8 @@ function init(self)
 
 	Account = {}
 
-	server.post("relog",nil, relog)
+
+	server.post("relog", nil, relog)
 end
 
 
@@ -36,7 +37,7 @@ end
 function relog(self, id, response)
 	if response.status == 200 then
 		response = json.decode(response.response)
-		if response then
+		if response ~= "No last account." then
 			Account = response
 			msg.post("main:/loader#loader", "load_collection",{["proxy"] = "main_menu_proxy"})
 			msg.post("main:/loader#loader", "unload_collection",{["proxy"] = "account_menu_proxy"})
@@ -139,8 +140,8 @@ function connect_to_server(self)
 		self.waiting_for_server_response = false
 		if response.status ~= 200 then
 			show_popup(self.popup, "Connection failed.")
-		elseif response.response == '"Wrong password."' then
-			show_popup(self.popup, "Wrong password.")
+		elseif response.response == '"Wrong password or username."' then
+			show_popup(self.popup, "Wrong password or username.")
 		else
 			Account = json.decode(response.response)
 			msg.post("main:/loader#loader", "load_collection",{["proxy"] = "main_menu_proxy"})
@@ -152,3 +153,7 @@ function connect_to_server(self)
 end
 
 
+
+function on_message(self, message_id, message, sender)
+	input_box.on_message(message_id)
+end
